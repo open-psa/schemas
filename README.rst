@@ -8,4 +8,5 @@ Schemas in other formats are generated automatically for major releases.
 
 trang_ is used to convert the source schema into RelaxNG and XSD formats.
 
-.. _RelaxNG: https://relaxng.org/
+.. _RelaxNG: http://relaxng.org/
+.. _trang: http://www.thaiopensource.com/relaxng/trang.html
