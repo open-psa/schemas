@@ -1,0 +1,16 @@
+language: java
+
+addons:
+    apt:
+        packages:
+            - trang
+            - libxml2
+
+before_script:
+    - git clone --depth 1 --branch master https://github.com/open-psa/mef-examples
+
+script:
+    - trang 2.0d/mef.rnc _check_mef.rng
+    - trang 2.0d/mef.rnc _check_mef.xsd
+    - xmllint --noout --relaxng _check_mef.rng mef-examples/*/*.xml
+    - xmllint --noout --schema _check_mef.xsd mef-examples/*/*.xml
