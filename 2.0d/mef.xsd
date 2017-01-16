@@ -1177,6 +1177,7 @@
   <xs:element name="histogram" substitutionGroup="random-deviate">
     <xs:complexType>
       <xs:sequence>
+        <xs:group ref="expression"/>
         <xs:element maxOccurs="unbounded" ref="bin"/>
       </xs:sequence>
     </xs:complexType>
