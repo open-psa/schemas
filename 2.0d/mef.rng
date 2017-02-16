@@ -1227,34 +1227,11 @@
     </define>
 
     <define name="periodic-test">
-      <choice>
-        <element name="periodic-test">
+      <element name="periodic-test">
+        <oneOrMore>
           <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-        </element>
-        <element name="periodic-test">
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-        </element>
-        <element name="periodic-test">
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-          <ref name="expression"/>
-        </element>
-      </choice>
+        </oneOrMore>
+      </element>
     </define>
 
     <define name="extern-function">

@@ -140,7 +140,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="instruction"/>
       </xs:sequence>
       <xs:attributeGroup ref="name"/>
-      <xs:attribute name="time-fraction" use="required" type="xs:float"/>
+      <xs:attribute name="time-fraction" use="required" type="xs:double"/>
     </xs:complexType>
   </xs:element>
   <!-- ############################################################### -->
@@ -738,7 +738,7 @@
       <xs:group ref="constant"/>
       <xs:group ref="parameter"/>
       <xs:group ref="operation"/>
-      <xs:group ref="built-in"/>
+      <xs:element ref="built-in"/>
       <xs:element ref="random-deviate"/>
       <xs:element ref="test-event"/>
     </xs:choice>
@@ -774,15 +774,7 @@
       <xs:element ref="conditional-operation"/>
     </xs:choice>
   </xs:group>
-  <xs:group name="built-in">
-    <xs:choice>
-      <xs:element ref="exponential"/>
-      <xs:element ref="GLM"/>
-      <xs:element ref="Weibull"/>
-      <xs:group ref="periodic-test"/>
-      <xs:element ref="extern-function"/>
-    </xs:choice>
-  </xs:group>
+  <xs:element name="built-in" abstract="true"/>
   <xs:element name="random-deviate" abstract="true"/>
   <xs:element name="test-event" abstract="true"/>
   <!-- *********************************************************** -->
@@ -800,7 +792,7 @@
   </xs:element>
   <xs:element name="float">
     <xs:complexType>
-      <xs:attribute name="value" use="required" type="xs:float"/>
+      <xs:attribute name="value" use="required" type="xs:double"/>
     </xs:complexType>
   </xs:element>
   <!-- *********************************************************** -->
@@ -1054,7 +1046,7 @@
   <!-- *********************************************************** -->
   <!-- V.2.6. Built-ins -->
   <!-- *********************************************************** -->
-  <xs:element name="exponential">
+  <xs:element name="exponential" substitutionGroup="built-in">
     <xs:complexType>
       <xs:sequence>
         <xs:group ref="expression"/>
@@ -1062,17 +1054,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GLM">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:group ref="expression"/>
-        <xs:group ref="expression"/>
-        <xs:group ref="expression"/>
-        <xs:group ref="expression"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Weibull">
+  <xs:element name="GLM" substitutionGroup="built-in">
     <xs:complexType>
       <xs:sequence>
         <xs:group ref="expression"/>
@@ -1082,49 +1064,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:group name="periodic-test">
-    <xs:choice>
-      <xs:element name="periodic-test">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="periodic-test">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="periodic-test">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-            <xs:group ref="expression"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:choice>
-  </xs:group>
-  <xs:element name="extern-function">
+  <xs:element name="Weibull" substitutionGroup="built-in">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="expression"/>
+        <xs:group ref="expression"/>
+        <xs:group ref="expression"/>
+        <xs:group ref="expression"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="periodic-test" substitutionGroup="built-in">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="expression"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="extern-function" substitutionGroup="built-in">
     <xs:complexType>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="expression"/>
       <xs:attributeGroup ref="name"/>
