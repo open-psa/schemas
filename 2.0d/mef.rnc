@@ -14,7 +14,8 @@ start =
     name?,
     label?,
     attributes?,
-    (event-tree-definition
+    (model-data
+     | event-tree-definition
      | alignment-definition
      | consequence-group-definition
      | consequence-definition
@@ -24,13 +25,7 @@ start =
      | fault-tree-definition
      | substitution-definition
      | CCF-group-definition
-     | include-directive)*,
-    element model-data {
-      (house-event-definition
-       | basic-event-definition
-       | parameter-definition
-       | include-directive)*
-    }?
+     | include-directive)*
   }
 Identifier = xsd:NCName { pattern = "[^\-.]+(-[^\-.]+)*" }
 name = attribute name { Identifier }
@@ -281,6 +276,12 @@ component-definition =
      | include-directive)*
   }
 role = attribute role { "private" | "public" }
+model-data =
+  element model-data {
+    (house-event-definition
+     | basic-event-definition
+     | parameter-definition)*
+  }
 event-definition =
   gate-definition | house-event-definition | basic-event-definition
 # =============================================================

@@ -12,6 +12,7 @@
         <xs:element minOccurs="0" ref="label"/>
         <xs:element minOccurs="0" ref="attributes"/>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="model-data"/>
           <xs:element ref="define-event-tree"/>
           <xs:element ref="define-alignment"/>
           <xs:element ref="define-consequence-group"/>
@@ -24,19 +25,8 @@
           <xs:element ref="define-CCF-group"/>
           <xs:element ref="include"/>
         </xs:choice>
-        <xs:element minOccurs="0" ref="model-data"/>
       </xs:sequence>
       <xs:attribute name="name" type="Identifier"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="model-data">
-    <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="define-house-event"/>
-        <xs:element ref="define-basic-event"/>
-        <xs:element ref="define-parameter"/>
-        <xs:element ref="include"/>
-      </xs:choice>
     </xs:complexType>
   </xs:element>
   <xs:simpleType name="Identifier">
@@ -512,6 +502,15 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:attributeGroup>
+  <xs:element name="model-data">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="define-house-event"/>
+        <xs:element ref="define-basic-event"/>
+        <xs:element ref="define-parameter"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="event-definition" abstract="true"/>
   <!-- ============================================================= -->
   <!-- IV.2. Definitions of Gates, House Events & Basic Events -->
