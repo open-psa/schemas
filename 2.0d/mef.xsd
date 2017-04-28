@@ -101,7 +101,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="label"/>
         <xs:element minOccurs="0" ref="attributes"/>
-        <xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="consequence"/>
           <xs:element ref="consequence-group"/>
         </xs:choice>

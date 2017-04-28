@@ -124,10 +124,12 @@
       <optional>
         <ref name="attributes"/>
       </optional>
-      <choice>
-        <ref name="consequence"/>
-        <ref name="consequence-group"/>
-      </choice>
+      <zeroOrMore>
+        <choice>
+          <ref name="consequence"/>
+          <ref name="consequence-group"/>
+        </choice>
+      </zeroOrMore>
     </element>
   </define>
 
