@@ -133,7 +133,7 @@ event-tree-definition =
 functional-event-definition =
   element define-functional-event { name, label?, attributes? }
 sequence-definition =
-  element define-sequence { name, label?, attributes?, instruction+ }
+  element define-sequence { name, label?, attributes?, instruction* }
 branch-definition =
   element define-branch { name, label?, attributes?, branch }
 initial-state = element initial-state { branch }

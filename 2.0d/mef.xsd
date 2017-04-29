@@ -212,7 +212,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="label"/>
         <xs:element minOccurs="0" ref="attributes"/>
-        <xs:element maxOccurs="unbounded" ref="instruction"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="instruction"/>
       </xs:sequence>
       <xs:attributeGroup ref="name"/>
     </xs:complexType>
